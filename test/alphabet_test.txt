@@ -1,0 +1,13 @@
+zed
+yank
+xeny
+xens
+*spaces ignored, but non alpha are okay
+ leading spaces are okay
+4nums are allowed
+
+ 
+smiley
+smiler
+cat
+rant the order should be: z,y,x,*,l,4,s,c,r

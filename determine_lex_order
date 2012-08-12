@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# Shell script wrapper for parsing a dictionary into an alphabet
+# Accepts text file arguments or stdin
+require_relative 'parser'
+parser = Parser.new
+
+# Each line is stripped and fed into the parser
+if $stdin.tty?
+  # Command line argument file input (from a tty)
+  if ARGV.empty?
+    $stderr.puts "Usage: #{File.basename($0)} [dictionary file]"
+    exit 1
+  end
+  ARGF.each do |line|
+    parser.add_word line.strip
+  end
+else
+  # Read from stdin (input was piped)
+  $stdin.each_line do |line|
+    parser.add_word line.strip
+  end
+end
+
+# Sort the alphabet and print for human consumption
+parser.pretty_print(parser.sort)
